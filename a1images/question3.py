@@ -7,7 +7,7 @@ cvt_img = cv.cvtColor(image3, cv.COLOR_BGR2Lab)
 fig, ax = plt.subplots(1,4, figsize = (18,4))
 L,a,b = cv.split(cvt_img)
 # Apply gamma correction to the L channel
-gamma = 4  # You can modify the gamma value
+gamma = 2  # You can modify the gamma value
 L_float = L / 255.0  # Normalize to [0, 1]
 L_gamma_corrected = np.power(L_float, gamma) * 255  # Gamma correction
 L_gamma_corrected = np.uint8(L_gamma_corrected)
