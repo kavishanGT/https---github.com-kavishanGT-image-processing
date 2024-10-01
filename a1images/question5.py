@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-def custom_histogram_equalization(image):
+def histogram_equalization(image):
     """
     Perform histogram equalization on a grayscale image.
     """
@@ -23,18 +23,14 @@ def custom_histogram_equalization(image):
 
     return image_equalized, hist, cdf_final
 
-# ==========================
-# Load and Prepare the Image
-# ==========================
 # Load image as grayscale
 image = cv2.imread('a1images/shells.tif')  # Replace with your image path
 
 # Perform histogram equalization
-image_equalized, original_hist, cdf_final = custom_histogram_equalization(image)
+image_equalized, original_hist, cdf_final = histogram_equalization(image)
 
-# ==========================
+
 # Plot Histograms Before and After Equalization
-# ==========================
 plt.figure(figsize=(12, 6))
 
 # Original image and its histogram

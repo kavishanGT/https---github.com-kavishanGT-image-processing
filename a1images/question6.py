@@ -27,7 +27,7 @@ plt.title('Value Plane')
 plt.axis('off')
 plt.show()
 
-# Step (b): Threshold the value plane to extract foreground
+# Threshold the value plane to extract foreground
 _, mask = cv2.threshold(value, 120, 255, cv2.THRESH_BINARY)
 
 # Display the binary mask
@@ -36,7 +36,7 @@ plt.title('Foreground Mask')
 plt.axis('off')
 plt.show()
 
-# Step (c): Use mask to extract the foreground
+# Use mask to extract the foreground
 foreground = cv2.bitwise_and(value, value, mask=mask)
 
 # Compute the histogram of the foreground
@@ -47,7 +47,7 @@ plt.plot(foreground_hist)
 plt.title('Foreground Histogram')
 plt.show()
 
-# Step (d): Compute the cumulative sum of the histogram
+#Compute the cumulative sum of the histogram
 cdf = np.cumsum(foreground_hist)
 cdf_normalized = cdf * (foreground_hist.max() / cdf.max())
 
@@ -56,7 +56,7 @@ plt.plot(cdf_normalized, color='b')
 plt.title('Cumulative Sum of Foreground Histogram')
 plt.show()
 
-# Step (e): Normalize the CDF and apply histogram equalization
+#Normalize the CDF and apply histogram equalization
 cdf_m = np.ma.masked_equal(cdf, 0)  # Mask the zeros in CDF
 cdf_m = (cdf_m - cdf_m.min()) * 255 / (cdf_m.max() - cdf_m.min())  # Normalize CDF
 cdf_final = np.ma.filled(cdf_m, 0).astype('uint8')  # Fill the masked areas
@@ -70,7 +70,7 @@ plt.title('Equalized Foreground')
 plt.axis('off')
 plt.show()
 
-# Step (f): Extract the background
+#Extract the background
 background = cv2.bitwise_and(value, value, mask=cv2.bitwise_not(mask))
 
 # Combine the equalized foreground and background

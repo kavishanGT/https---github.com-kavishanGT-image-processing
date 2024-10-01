@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the image (convert to grayscale for simplicity)
-image = cv2.imread('a1images/einstein.png', cv2.IMREAD_GRAYSCALE)  # Replace with the path to Fig. 7
+image = cv2.imread('a1images/einstein.png', cv2.IMREAD_GRAYSCALE)
 # Define the Sobel kernels for X and Y directions
 sobel_x = np.array([[1, 0, -1], 
                     [2, 0, -2], 
